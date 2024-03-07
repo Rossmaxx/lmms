@@ -741,7 +741,7 @@ void VstPlugin::createUI( QWidget * parent )
 		QWindow* vw = QWindow::fromWinId(m_pluginWindowID);
 		vw->setFlags(Qt::FramelessWindowHint);
 		container = QWidget::createWindowContainer(vw, parent );
-		// container->setFocusPolicy(Qt::ClickFocus);
+		container->setFocusPolicy(Qt::ClickFocus);
 		container->installEventFilter(this);
 	} else
 #endif
