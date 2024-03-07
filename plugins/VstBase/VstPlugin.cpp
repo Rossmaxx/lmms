@@ -739,9 +739,9 @@ void VstPlugin::createUI( QWidget * parent )
 	if (m_embedMethod == "qt" )
 	{
 		QWindow* vw = QWindow::fromWinId(m_pluginWindowID);
+		vw->setFlags(Qt::FramelessWindowHint);
 		container = QWidget::createWindowContainer(vw, parent );
-		container->setWindowFlags(Qt::FramelessWindowHint);
-		container->setFocusPolicy(Qt::ClickFocus);
+		// container->setFocusPolicy(Qt::ClickFocus);
 		container->installEventFilter(this);
 	} else
 #endif
