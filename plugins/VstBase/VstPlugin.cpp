@@ -735,10 +735,11 @@ void VstPlugin::createUI( QWidget * parent )
 
 	QWidget* container = nullptr;
 
-#if QT_VERSION >= 0x050100
+#if QT_VERSION >= QT_VERSION_CHECK(5,10,00)
 	if (m_embedMethod == "qt" )
 	{
 		QWindow* vw = QWindow::fromWinId(m_pluginWindowID);
+		vw->setWindowFlags(Qt::FramelessWindowHint);
 		container = QWidget::createWindowContainer(vw, parent );
 		container->installEventFilter(this);
 	} else
