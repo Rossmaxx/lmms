@@ -735,7 +735,7 @@ void VstPlugin::createUI( QWidget * parent )
 
 	QWidget* container = nullptr;
 
-#if QT_VERSION >= QT_VERSION_CHECK(5,10,00)
+#if QT_VERSION >= QT_VERSION_CHECK(5,01,00)
 	if (m_embedMethod == "qt" )
 	{
 		QWindow* vw = QWindow::fromWinId(m_pluginWindowID);
