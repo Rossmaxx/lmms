@@ -171,6 +171,7 @@ private:
 
 	QTimer m_idleTimer;
 
+	QWidget* container = nullptr;
 } ;
 
 

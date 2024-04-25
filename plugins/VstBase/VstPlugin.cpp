@@ -733,15 +733,11 @@ void VstPlugin::createUI( QWidget * parent )
 		return;
 	}
 
-	QWidget* container = nullptr;
-
 
 	if (m_embedMethod == "qt" )
 	{
 		QWindow* vw = QWindow::fromWinId(m_pluginWindowID);
-		vw->setFlags(Qt::FramelessWindowHint);
 		container = QWidget::createWindowContainer(vw, parent );
-		container->setFocusPolicy(Qt::ClickFocus);
 		container->installEventFilter(this);
 	} else
 
@@ -807,6 +803,11 @@ bool VstPlugin::eventFilter(QObject *obj, QEvent *event)
 		if (event->type() == QEvent::Show) {
 			RemotePlugin::showUI();
 		}
+		if ((event->type() == QEvent::FocusIn) && !container->hasFocus())
+    	{
+        	// Ensure the entire widget receives focus when any part of it is focused
+        	container->setFocus();
+    	}
 		qDebug() << obj << event;
 	}
 	return false;
